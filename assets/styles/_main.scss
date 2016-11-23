@@ -1,0 +1,23 @@
+#main{
+
+	width: 100%;
+	padding: 0px 30px 30px 250px;
+	
+	.title-page{
+		font-size: 30px;
+		color: #2c3e50;
+		line-height: 70px
+	}
+
+	.wrapper{
+		padding: 20px;
+		width: 100%;
+		background: #ecf0f1;
+		border-radius: 4px;
+		&.list{
+			padding: 0;
+			background: none;
+		}
+	}
+
+}

@@ -1,0 +1,44 @@
+{
+  "students": [
+    {
+      "name": {
+        "first": "boyer",
+        "last": "maëlys"
+      },
+      "id": "8a856779-f7c6-63e2-b573-fcb0e53c86a1",
+      "color": "#f6aa9f"
+    },
+    {
+      "name": {
+        "first": "girard",
+        "last": "naël"
+      },
+      "id": "c7f53ea9-325a-370d-922d-b983dc302517",
+      "color": "#d29095"
+    },
+    {
+      "name": {
+        "first": "pierre",
+        "last": "timothe"
+      },
+      "id": "a68f7497-c0d7-10e8-c208-01ad4e795fc8",
+      "color": "#d99297"
+    },
+    {
+      "name": {
+        "first": "roy",
+        "last": "marceau"
+      },
+      "id": "be922794-1d63-9a07-97c3-7e286aa219da",
+      "color": "#eda09d"
+    },
+    {
+      "name": {
+        "first": "guerin",
+        "last": "eloane"
+      },
+      "id": "813bde6d-587e-75db-3f20-64b14412d632",
+      "color": "#e09599"
+    }
+  ]
+}
