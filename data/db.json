@@ -23,6 +23,22 @@
       },
       "id": "a68f7497-c0d7-10e8-c208-01ad4e795fc8",
       "color": "#d99297"
+    },
+    {
+      "name": {
+        "first": "roy",
+        "last": "marceau"
+      },
+      "id": "be922794-1d63-9a07-97c3-7e286aa219da",
+      "color": "#eda09d"
+    },
+    {
+      "name": {
+        "first": "guerin",
+        "last": "eloane"
+      },
+      "id": "813bde6d-587e-75db-3f20-64b14412d632",
+      "color": "#e09599"
     }
   ]
 }

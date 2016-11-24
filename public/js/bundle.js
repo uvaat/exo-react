@@ -28713,6 +28713,7 @@
 				if (this.props.buttonCancel) {
 					buttonCancel = this.getButton('button-cancel', this.props.buttonCancel, this.props.callbackCancel);
 				}
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: "alert " + this.props.status },
@@ -28932,6 +28933,7 @@
 				if (this.props.buttonCancel) {
 					buttonCancel = this.getButton('button-cancel', this.props.buttonCancel, this.props.callbackCancel);
 				}
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: "alert " + this.props.status },
