@@ -21628,7 +21628,7 @@
 	var GET_STUDENT_SUCCESS = exports.GET_STUDENT_SUCCESS = 'GET_STUDENT_SUCCESS';
 	var EDIT_STUDENT_SUCCESS = exports.EDIT_STUDENT_SUCCESS = 'EDIT_STUDENT_SUCCESS';
 	
-	var DELETE_USER_SUCCESS = exports.DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+	var DELETE_STUDENT_SUCCESS = exports.DELETE_STUDENT_SUCCESS = 'DELETE_STUDENT_SUCCESS';
 
 /***/ },
 /* 193 */
@@ -28660,7 +28660,7 @@
 /* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -28690,12 +28690,37 @@
 		}
 	
 		_createClass(Alert, [{
-			key: "render",
-			value: function render() {
+			key: 'getButton',
+			value: function getButton(className, content, callBack) {
 				return _react2.default.createElement(
-					"div",
+					'button',
+					{
+						className: "button " + className,
+						onClick: callBack },
+					content
+				);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				var buttonConfim = '';
+				if (this.props.buttonConfim) {
+					buttonConfim = this.getButton('button-confirm', this.props.buttonConfim, this.props.callbackConfirm);
+				}
+	
+				var buttonCancel = '';
+				if (this.props.buttonCancel) {
+					buttonCancel = this.getButton('button-cancel', this.props.buttonCancel, this.props.callbackCancel);
+				}
+				return _react2.default.createElement(
+					'div',
 					{ className: "alert " + this.props.status },
-					this.props.msg
+					this.props.msg,
+					' ',
+					buttonConfim,
+					' ',
+					buttonCancel
 				);
 			}
 		}]);
@@ -28731,13 +28756,11 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _studentProfil = __webpack_require__(280);
+	var _alert = __webpack_require__(280);
 	
-	var _studentProfil2 = _interopRequireDefault(_studentProfil);
+	var _alert2 = _interopRequireDefault(_alert);
 	
 	var _reactRouter = __webpack_require__(194);
-	
-	var _reactRouter2 = _interopRequireDefault(_reactRouter);
 	
 	var _studentActions = __webpack_require__(275);
 	
@@ -28772,10 +28795,20 @@
 	
 	            studentApi.deleteStudent(this.props.params.studentId).then(function (response) {
 	                _store2.default.dispatch((0, _studentActions.deleteStudentSuccess)(_this2.props.params.studentId));
-	                //Router.browserHistory.push('/');
+	                _reactRouter.browserHistory.push('/');
 	            }, function (error) {
 	                console.log(error);
 	            });
+	        }
+	    }, {
+	        key: 'cancel',
+	        value: function cancel() {
+	            this.setState({ confirm: false });
+	        }
+	    }, {
+	        key: 'confirmDelete',
+	        value: function confirmDelete() {
+	            this.setState({ confirm: true });
 	        }
 	    }, {
 	        key: 'render',
@@ -28790,6 +28823,18 @@
 	                    ' ',
 	                    this.props.student.name.last
 	                );
+	            }
+	
+	            var confirm = '';
+	            if (this.state && this.state.confirm) {
+	                confirm = _react2.default.createElement(_alert2.default, {
+	                    msg: "Êtes vous sur de vouloir supprimer cet étudiant ?",
+	                    status: 'confirm',
+	                    callbackConfirm: this.delete.bind(this),
+	                    callbackCancel: this.cancel.bind(this),
+	                    buttonConfim: 'Oui',
+	                    buttonCancel: 'Non'
+	                });
 	            }
 	
 	            return _react2.default.createElement(
@@ -28810,10 +28855,11 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'button',
-	                        { className: 'button button-alert', onClick: this.delete.bind(this) },
+	                        { className: 'button button-alert', onClick: this.confirmDelete.bind(this) },
 	                        'Supprimer'
 	                    )
-	                )
+	                ),
+	                confirm
 	            );
 	        }
 	    }]);
@@ -28833,7 +28879,7 @@
 /* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -28853,36 +28899,55 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var StudentProfil = function (_React$Component) {
-		_inherits(StudentProfil, _React$Component);
+	var Alert = function (_React$Component) {
+		_inherits(Alert, _React$Component);
 	
-		function StudentProfil() {
-			_classCallCheck(this, StudentProfil);
+		function Alert() {
+			_classCallCheck(this, Alert);
 	
-			return _possibleConstructorReturn(this, (StudentProfil.__proto__ || Object.getPrototypeOf(StudentProfil)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Alert.__proto__ || Object.getPrototypeOf(Alert)).apply(this, arguments));
 		}
 	
-		_createClass(StudentProfil, [{
-			key: "render",
-			value: function render() {
+		_createClass(Alert, [{
+			key: 'getButton',
+			value: function getButton(className, content, callBack) {
 				return _react2.default.createElement(
-					"div",
-					{ className: "student-profil" },
-					_react2.default.createElement(
-						"h2",
-						{ className: "Name" },
-						this.props.datas.name.first,
-						" - ",
-						this.props.datas.name.last
-					)
+					'button',
+					{
+						className: "button " + className,
+						onClick: callBack },
+					content
+				);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				var buttonConfim = '';
+				if (this.props.buttonConfim) {
+					buttonConfim = this.getButton('button-confirm', this.props.buttonConfim, this.props.callbackConfirm);
+				}
+	
+				var buttonCancel = '';
+				if (this.props.buttonCancel) {
+					buttonCancel = this.getButton('button-cancel', this.props.buttonCancel, this.props.callbackCancel);
+				}
+				return _react2.default.createElement(
+					'div',
+					{ className: "alert " + this.props.status },
+					this.props.msg,
+					' ',
+					buttonConfim,
+					' ',
+					buttonCancel
 				);
 			}
 		}]);
 	
-		return StudentProfil;
+		return Alert;
 	}(_react2.default.Component);
 	
-	exports.default = StudentProfil;
+	exports.default = Alert;
 
 /***/ },
 /* 281 */

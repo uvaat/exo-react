@@ -2548,3 +2548,6 @@ button::-moz-focus-inner {
   .alert.success {
     background: #2ecc71;
     color: #fff; }
+  .alert.confirm {
+    background: #3498db;
+    color: #fff; }
